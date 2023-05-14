@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react"
-import { Icon, getColorValue } from "./helper"
+import { Icon, getColorValue } from "./helpers"
 
 describe("Icon", () => {
     it("renders nothing when name is not valid", () => {

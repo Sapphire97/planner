@@ -1,5 +1,5 @@
 import {ButtonContainer, ButtonContent, ButtonIconContainer} from "./Button-styled";
-import {getColorValue, Icon} from "../../utils/helper";
+import {getColorValue, Icon} from "../../utils/helpers";
 
 type ButtonProps = {
     variant: "primary" | "secondary" | "danger" | "success" | "warning"
@@ -11,7 +11,6 @@ type ButtonProps = {
 
 const Button = ({ variant, content, disabled, icon, onBtnPress }: ButtonProps) => {
     const {backgroundColor, color} = getColorValue(variant)
-    console.log(disabled, typeof disabled)
     return (
         <ButtonContainer
             onClick={onBtnPress}

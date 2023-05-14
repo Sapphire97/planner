@@ -12,7 +12,8 @@ const NavbarContainer = styled.nav`
     right: 0;
     top: 0;
     z-index: 1030;
-    padding: 23px 50px;
+    padding: 20px 50px;
+    height: 20px;
 `
 const NavbarTitle = styled.span`
     color: #fff;

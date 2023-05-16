@@ -1,5 +1,5 @@
+import React from "react"
 import {Icon} from "../../../../utils/helpers";
-import React from "react";
 import {CloseDialogContainer} from "./CloseDialog-styled";
 
 type CloseDialogProps = {

@@ -1,3 +1,4 @@
+import React from "react"
 const HomeIcon = ({ color }: IconProps) => (
     <svg fill={color ?? "#000000"} fillRule="evenodd" height="14" role="img" viewBox="0 0 16 16" width="14" aria-label="Provide a description that will be used as the title">
         <title>Home</title>

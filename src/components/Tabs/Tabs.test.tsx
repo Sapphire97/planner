@@ -1,6 +1,7 @@
 import React from "react"
 import { render, fireEvent } from "@testing-library/react"
 import Tabs from "./Tabs"
+import "@testing-library/jest-dom/extend-expect"
 
 describe("Tabs component", () => {
     const availableTabs = ["Tab 1", "Tab 2", "Tab 3"]

@@ -1,5 +1,7 @@
+import React from "react"
 import { render, fireEvent } from "@testing-library/react"
 import AddTaskDialog from "./AddTaskDialog"
+import "@testing-library/jest-dom/extend-expect"
 
 describe("AddTaskDialog", () => {
     const closeOverlayMock = jest.fn()

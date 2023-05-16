@@ -1,6 +1,6 @@
+import React, {useEffect} from "react"
 import {NotificationContainer} from "./Notification-styled"
 import {getColorValueByName} from "../../utils/helpers"
-import {useEffect} from "react"
 
 type NotificationProps = {
     notificationMessage: string

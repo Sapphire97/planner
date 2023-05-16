@@ -1,6 +1,7 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import Navbar from "./Navbar";
+import React from "react"
+import { render } from "@testing-library/react"
+import Navbar from "./Navbar"
+import "@testing-library/jest-dom/extend-expect"
 
 describe("Navbar component", () => {
     it("renders the navbar title correctly", () => {

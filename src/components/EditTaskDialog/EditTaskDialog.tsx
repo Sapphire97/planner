@@ -1,3 +1,4 @@
+import React, {useState} from "react"
 import Input from "../Input/Input";
 import TextArea from "../TextArea/TextArea";
 import {
@@ -9,7 +10,6 @@ import {
 } from "../Overlay/Overlay-styled";
 import Button from "../Button/Button";
 import {Icon} from "../../utils/helpers";
-import React, {useState} from "react";
 import CloseDialog from "../Overlay/components/CloseDialog/CloseDialog";
 import {useTaskContext} from "../../hooks/useTaskContext";
 import {InputStyled, TextInputContainer} from "../Input/Input-styled";

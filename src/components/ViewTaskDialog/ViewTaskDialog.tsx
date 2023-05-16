@@ -1,3 +1,4 @@
+import React from "react"
 import {
     DialogBody, DialogContainer,
     DialogFooter,
@@ -5,7 +6,6 @@ import {
     DialogTitle
 } from "../Overlay/Overlay-styled";
 import Button from "../Button/Button";
-import React from "react";
 import CloseDialog from "../Overlay/components/CloseDialog/CloseDialog";
 import {useTaskContext} from "../../hooks/useTaskContext";
 import {DefaultTask} from "../../utils/defaults";

@@ -1,5 +1,7 @@
+import React from "react"
 import { render } from "@testing-library/react"
 import Breadcrumb from "./Breadcrumb"
+import "@testing-library/jest-dom/extend-expect"
 
 describe("Breadcrumb", () => {
     const breadcrumbs = ["First", "Second", "Third"]

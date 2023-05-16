@@ -1,10 +1,10 @@
+import React from "react"
 import {
     FloatingContainer,
     OverlayContainer,
     Shadow
 } from "./Overlay-styled";
 import {DialogContent} from "../../utils/helpers";
-import React from "react";
 
 type OverlayProps = {
     name: string

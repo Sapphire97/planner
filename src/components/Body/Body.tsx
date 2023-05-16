@@ -1,8 +1,8 @@
+import React, {useEffect, useState} from "react";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import {BodyContainer, BodyContent, BodyHeader, BodyTitle} from "./Body-styled";
 import Button from "../Button/Button";
 import TaskRow from "../TaskRow/TaskRow";
-import React, {useEffect, useState} from "react";
 import {TaskProvider} from "../../hooks/useTaskContext";
 import Tabs from "../Tabs/Tabs";
 import {groupTasks} from "../../utils/dataHelpers";

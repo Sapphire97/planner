@@ -1,5 +1,7 @@
+import React from "react"
 import { fireEvent, render } from "@testing-library/react"
 import RadioButton from "./RadioButton"
+import "@testing-library/jest-dom/extend-expect"
 
 describe("RadioButton component", () => {
     it("renders the content prop", () => {

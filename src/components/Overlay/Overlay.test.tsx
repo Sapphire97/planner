@@ -1,6 +1,7 @@
 import React from "react"
 import { render, screen, fireEvent } from "@testing-library/react"
 import Overlay from "./Overlay"
+import "@testing-library/jest-dom/extend-expect"
 
 describe("Overlay", () => {
     const setOverlayNameMock = jest.fn()

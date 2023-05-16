@@ -1,3 +1,4 @@
+import React from "react"
 import {TextAreaContainer, TextAreaInput, TextAreaLabel} from "./TextArea-styled";
 
 type TextAreaProps<T> = {

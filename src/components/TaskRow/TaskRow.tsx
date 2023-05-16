@@ -20,7 +20,7 @@ type TaskRowProps = {
 
 const TaskRow = ({ task, setOverlayName, setNotificationMessage } : TaskRowProps) => {
     const { tasks, setTasks, setSelectedTask } = useTaskContext()
-    let dateString = (new Date(task.createdOn)).toDateString()
+    let dateString = (new Date(task.dueDate)).toDateString()
     const taskState = task.isArchived ? "archived" :
         (new Date()).toDateString() === dateString ? "today" :
             new Date(task.dueDate) < new Date() ? "overdue"

@@ -1,15 +1,15 @@
 import {RadioButtonContainer, RadioInput, RadioLabel} from "./RadioButton-styled";
 
 type RadioButtonProps<T> = {
-    content: string,
+    content?: string,
     value: T,
-    setValue: (value: T) => void
+    onClick: (value: T) => void
 }
-const RadioButton = ({content, value, setValue}: RadioButtonProps<any>) => {
+const RadioButton = ({content, value, onClick}: RadioButtonProps<any>) => {
     return (
         <RadioButtonContainer id={"radio"} data-testid={"radio-container"}>
-            <RadioInput id={`radio-${value}`} type="radio" value={value} onChange={(e) => setValue(e.target.value)} />
-            <RadioLabel htmlFor={`radio-${value}`}> {content} </RadioLabel>
+            <RadioInput id={`radio-${value}`} type="radio" value={value} onClick={() => onClick(value)} />
+            {content && <RadioLabel htmlFor={`radio-${value}`}> {content} </RadioLabel>}
         </RadioButtonContainer>
     )
 }

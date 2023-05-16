@@ -7,6 +7,7 @@ import {TaskProvider} from "../../hooks/useTaskContext";
 import Tabs from "../Tabs/Tabs";
 import {groupTasks} from "../../utils/dataHelpers";
 import Overlay from "../Overlay/Overlay";
+import Notification from "../Notification/Notification";
 
 const Body = () => {
     const storedTasks = localStorage.getItem("tasks")
@@ -15,6 +16,7 @@ const Body = () => {
     const [activeTab, setActiveTab] = useState<string>( (Object.keys(groupedTasks) ?? [""])[0])
     const [tabData, setTabData] = useState<Task[]>(tasks)
     const [overlayName, setOverlayName] = useState("")
+    const [notificationMessage, setNotificationMessage] = useState("")
 
     const openAddTaskOverlay = () => {
         setOverlayName("addTask")
@@ -38,6 +40,7 @@ const Body = () => {
         <BodyContainer data-testid={"body-container"}>
             <TaskProvider tasks={tasks} setTasks={setTasks} activeTab={activeTab} setActiveTab={setActiveTab}>
                 <Breadcrumb breadcrumbs={["Today"]} />
+                <Notification notificationMessage={notificationMessage} setNotificationMessage={setNotificationMessage} />
                 <Tabs availableTabs={Object.keys(groupedTasks)} activeTab={activeTab} setActiveTab={setActiveTab} />
                 <BodyHeader>
                     <BodyTitle>{activeTab}</BodyTitle>
@@ -46,12 +49,12 @@ const Body = () => {
                 <BodyContent>
                     {tabData.map((task) => (
                         <div key={`task_${task.id}`}>
-                            <TaskRow task={task} setOverlayName={setOverlayName} />
+                            <TaskRow task={task} setOverlayName={setOverlayName} setNotificationMessage={setNotificationMessage} />
                         </div>
                     ))}
                     {tabData.length < 1 && <div> No data to show </div>}
                 </BodyContent>
-                <Overlay name={overlayName} setOverlayName={setOverlayName} />
+                <Overlay name={overlayName} setOverlayName={setOverlayName} setNotificationMessage={setNotificationMessage} />
             </TaskProvider>
         </BodyContainer>
     )

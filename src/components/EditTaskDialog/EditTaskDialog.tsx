@@ -19,9 +19,10 @@ import {DatesGroup, DatesContainer, DatesRowContent, DatesRowLabel} from "./Edit
 
 type EditTaskProps = {
     closeOverlay: () => void
+    setNotificationMessage: (message: string) => void
 }
 
-const EditTaskDialog = ({closeOverlay}: EditTaskProps) => {
+const EditTaskDialog = ({closeOverlay, setNotificationMessage}: EditTaskProps) => {
     const {tasks, setTasks} = useTaskContext()
     const {selectedTask} = useTaskContext()
     const task = selectedTask ?? DefaultTask
@@ -51,6 +52,7 @@ const EditTaskDialog = ({closeOverlay}: EditTaskProps) => {
         )
         setTasks(updatedTasks)
         closeOverlay()
+        setNotificationMessage(`Task ${task.title} was updated successfully`)
     }
 
     const handleEditInput = (): void => {

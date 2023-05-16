@@ -14,9 +14,10 @@ import {dangerColor, primaryColor, secondaryColor, successColor} from "../../uti
 type TaskRowProps = {
     task: Task
     setOverlayName: (name: string) => void
+    setNotificationMessage: (message: string) => void
 }
 
-const TaskRow = ({ task, setOverlayName } : TaskRowProps) => {
+const TaskRow = ({ task, setOverlayName, setNotificationMessage } : TaskRowProps) => {
     const { tasks, setTasks, setSelectedTask } = useTaskContext()
     let dateString = (new Date(task.createdOn)).toDateString()
     const taskState = task.isArchived ? "archived" :
@@ -30,16 +31,23 @@ const TaskRow = ({ task, setOverlayName } : TaskRowProps) => {
             : taskState === "upcoming" ? successColor
                 : secondaryColor
     const archiveTask = () => {
-        const updatedTasks = tasks.map((selectedTask) =>
-            selectedTask.id === task.id ?
-                {
-                    ...selectedTask,
-                    isArchived: true,
-                    updatedOn: new Date()
-                } : selectedTask
-        )
-        setTasks(updatedTasks)
+        try {
+            const updatedTasks = tasks.map((selectedTask) =>
+                selectedTask.id === task.id ?
+                    {
+                        ...selectedTask,
+                        isArchived: true,
+                        updatedOn: new Date()
+                    } : selectedTask
+            )
+            setTasks(updatedTasks)
+            setNotificationMessage(`Task ${task.title} archived successfully`)
+        }
+        catch (e) {
+            setNotificationMessage("Opps! Something went wrong. Please try again later.")
+        }
     }
+
     const editTask = () => {
         if(task.isArchived) return
         setSelectedTask(task)

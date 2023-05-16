@@ -17,9 +17,10 @@ import {mapSubTasks} from "../../utils/dataHelpers";
 
 type AddTaskProps = {
     closeOverlay: () => void
+    setNotificationMessage: (message: string) => void
 }
 
-const AddTaskDialog = ({closeOverlay}: AddTaskProps) => {
+const AddTaskDialog = ({closeOverlay, setNotificationMessage}: AddTaskProps) => {
     const {tasks, setTasks} = useTaskContext()
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -47,6 +48,7 @@ const AddTaskDialog = ({closeOverlay}: AddTaskProps) => {
             }
         ])
         closeOverlay()
+        setNotificationMessage(`Task ${newTask.title} was added successfully`)
     }
 
     const handleAddInput = (): void => {

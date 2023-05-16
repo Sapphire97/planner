@@ -1,5 +1,5 @@
-export const primaryColor = "#007DBC";
-export const secondaryColor = "#444654";
-export const dangerColor = "#D90000";
-export const successColor = "#00B200";
-export const warningColor = "#FFD600";
+export const primaryColor = "rgb(0,125,188)";
+export const secondaryColor = "rgb(68,70,84)";
+export const dangerColor = "rgb(217,0,0)";
+export const successColor = "rgb(0,178,0)";
+export const warningColor = "rgb(255,214,0)";

@@ -1,25 +1,26 @@
-import Input from "../Input/Input";
-import TextArea from "../TextArea/TextArea";
+import Input from "../Input/Input"
+import TextArea from "../TextArea/TextArea"
 import {
     DialogBody, DialogContainer,
     DialogFooter,
     DialogHeader,
     DialogTitle,
     LinkButton
-} from "../Overlay/Overlay-styled";
-import Button from "../Button/Button";
-import {Icon} from "../../utils/helpers";
-import React, {useState} from "react";
-import CloseDialog from "../Overlay/components/CloseDialog/CloseDialog";
-import {useTaskContext} from "../../hooks/useTaskContext";
-import {InputStyled, TextInputContainer} from "../Input/Input-styled";
-import {mapSubTasks} from "../../utils/dataHelpers";
+} from "../Overlay/Overlay-styled"
+import Button from "../Button/Button"
+import {Icon} from "../../utils/helpers"
+import React, {useState} from "react"
+import CloseDialog from "../Overlay/components/CloseDialog/CloseDialog"
+import {useTaskContext} from "../../hooks/useTaskContext"
+import {InputStyled, TextInputContainer} from "../Input/Input-styled"
+import {mapSubTasks} from "../../utils/dataHelpers"
 
 type AddTaskProps = {
     closeOverlay: () => void
+    setNotificationMessage: (message: string) => void
 }
 
-const AddTaskDialog = ({closeOverlay}: AddTaskProps) => {
+const AddTaskDialog = ({closeOverlay, setNotificationMessage}: AddTaskProps) => {
     const {tasks, setTasks} = useTaskContext()
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -27,32 +28,38 @@ const AddTaskDialog = ({closeOverlay}: AddTaskProps) => {
     const [inputs, setInputs] = useState<InputState[]>([])
 
     const onSubmit = () => {
-        const newTask: Task = {
-            createdOn: new Date(),
-            description: description,
-            dueDate: dueDate,
-            id: 0,
-            subTasks: mapSubTasks(inputs),
-            title: title,
-            updatedOn: new Date()
-        }
-        const highestId = tasks.length < 1 ? 0 :
-            tasks.reduce((prev, current) => (prev.id > current.id ? prev : current)).id
-        setTasks([...tasks,
-            {
-                ...newTask,
-                id: highestId + 1,
+        try {
+            const newTask: Task = {
                 createdOn: new Date(),
+                description: description,
+                dueDate: dueDate,
+                id: 0,
+                subTasks: mapSubTasks(inputs),
+                title: title,
                 updatedOn: new Date()
             }
-        ])
-        closeOverlay()
+            const highestId = tasks.length < 1 ? 0 :
+                tasks.reduce((prev, current) => (prev.id > current.id ? prev : current)).id
+            setTasks([...tasks,
+                {
+                    ...newTask,
+                    id: highestId + 1,
+                    createdOn: new Date(),
+                    updatedOn: new Date()
+                }
+            ])
+            closeOverlay()
+            setNotificationMessage(`Task ${newTask.title} was added successfully`)
+        }
+        catch (e) {
+            setNotificationMessage("Oops! Something went wrong. Please try again later.")
+        }
     }
 
     const handleAddInput = (): void => {
-        const newId = inputs.length ? inputs[inputs.length - 1].id + 1 : 1;
-        const newInput = { id: newId, value: '' };
-        setInputs([...inputs, newInput]);
+        const newId = inputs.length ? inputs[inputs.length - 1].id + 1 : 1
+        const newInput = { id: newId, value: "" }
+        setInputs([...inputs, newInput])
     }
 
     const handleRemoveInput = (id: number): void => {

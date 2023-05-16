@@ -1,3 +1,5 @@
+import React from "react";
+
 const AddIcon = ({color}: IconProps) => (
     <svg width="8px" height="8px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <title>add</title>

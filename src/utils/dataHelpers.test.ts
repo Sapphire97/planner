@@ -1,3 +1,4 @@
+import React from "react";
 import {groupTasks, mapSubTasks} from "./dataHelpers";
 
 describe("groupTasks", () => {

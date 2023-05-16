@@ -1,3 +1,4 @@
+import React from "react";
 import {InputStyled, TextInputContainer, TextInputLabel} from "./Input-styled";
 
 type InputProps<T> = {

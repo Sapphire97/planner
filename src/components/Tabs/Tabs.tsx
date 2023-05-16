@@ -1,3 +1,4 @@
+import React from "react";
 import {Tab, TabsContainer} from "./Tabs-styled";
 import {primaryColor} from "../../utils/globals";
 

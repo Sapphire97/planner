@@ -1,3 +1,4 @@
+import React from "react";
 import AddIcon from "../components/Icons/AddIcon";
 import {dangerColor, primaryColor, secondaryColor, successColor, warningColor} from "./globals";
 import HomeIcon from "../components/Icons/HomeIcon";

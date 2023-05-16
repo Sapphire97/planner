@@ -1,3 +1,5 @@
+import React from "react";
+
 const CalendarIcon = ({ color } : IconProps) => (
     <svg width="7px" height="8px" viewBox="0 0 14 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <title>calendar</title>

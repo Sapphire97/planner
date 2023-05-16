@@ -3,6 +3,8 @@ import {dangerColor, primaryColor, secondaryColor, successColor, warningColor} f
 import HomeIcon from "../components/Icons/HomeIcon";
 import CalendarIcon from "../components/Icons/CalendarIcon";
 import EditIcon from "../components/Icons/EditIcon";
+import AddTaskDialog from "../components/AddTaskDialog/AddTaskDialog";
+import CloseIcon from "../components/Icons/CloseIcon";
 
 const Icon = ({name, color}: IconProps) => {
     switch (name) {
@@ -13,7 +15,9 @@ const Icon = ({name, color}: IconProps) => {
         case "calendar":
             return <CalendarIcon color={getColorValueByName(color)} />
         case "edit":
-            return <EditIcon color={getColorValueByName(color)}></EditIcon>
+            return <EditIcon color={getColorValueByName(color)}/>
+        case "close":
+            return <CloseIcon color={getColorValueByName(color)} />
         default:
             return <></>
     }
@@ -72,9 +76,12 @@ const getColorValue = (variant: string) => {
 }
 type DialogProps = {
     name: string
+    closeOverlay: () => void
 }
-const DialogContent = ({name}: DialogProps) => {
+const DialogContent = ({name, closeOverlay}: DialogProps) => {
     switch (name) {
+        case "addTask":
+            return <AddTaskDialog closeOverlay={closeOverlay} />
         default:
             return <>{name}</>
     }

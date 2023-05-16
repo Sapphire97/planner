@@ -22,7 +22,7 @@ const Overlay = ({name, setOverlayName}: OverlayProps) => {
         <OverlayContainer id={"overlay-container"} data-testid={"overlay-container"}>
             <Shadow data-testid={"shadow"} onClick={closeOverlay} />
             <DialogContainer>
-                <DialogContent name={name} />
+                <DialogContent name={name} closeOverlay={closeOverlay} />
             </DialogContainer>
         </OverlayContainer>
     )

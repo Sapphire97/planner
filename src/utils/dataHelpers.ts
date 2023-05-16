@@ -26,4 +26,11 @@ const isSameDay = (date1: Date, date2: Date): boolean => {
     )
 }
 
-export { groupTasks }
+const mapSubTasks = (inputs: InputState[]): SubTask[] => {
+    const subTasks: SubTask[] = []
+    for (let i = 0; i < inputs.length; i++)
+        subTasks.push({id: i+1, title: inputs[i].value, isDone: false })
+    return subTasks
+}
+
+export { groupTasks, mapSubTasks }

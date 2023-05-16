@@ -9,19 +9,8 @@ import {groupTasks} from "../../utils/dataHelpers";
 import Overlay from "../Overlay/Overlay";
 
 const Body = () => {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(today.getDate() + 1)
-    const yesterday = new Date(today)
-    yesterday.setDate(today.getDate() - 1)
-    const fakeTasks: Task[] = [
-        { id: 1, title: "Practice some spells", dueDate: today, createdOn: today, description: "Some Random test", subTasks: [], updatedOn: today },
-        { id: 2, title: "Feed crookshanks", dueDate: tomorrow, createdOn: tomorrow, description: "More random text", subTasks: [], updatedOn: tomorrow },
-        { id: 3, title: "Explore Hogsmeade", dueDate: today, createdOn: today, description: "Even more random text", subTasks: [], updatedOn: today, isArchived: true },
-        { id: 4, title: "Play Quidditch", dueDate: yesterday, createdOn: yesterday, description: "Even even more random text", subTasks: [], updatedOn: yesterday },
-        { id: 5, title: "Send an owl", dueDate: today, createdOn: today, description: "Even even even more random text", subTasks: [], updatedOn: today },
-    ]
-    const [tasks, setTasks] = useState<Task[]>(fakeTasks)
+    const storedTasks = localStorage.getItem("tasks")
+    const [tasks, setTasks] = useState<Task[]>(() => storedTasks ? JSON.parse(storedTasks) : [])
     const [groupedTasks, setGroupedTasks] = useState(() => groupTasks(tasks))
     const [activeTab, setActiveTab] = useState<string>( (Object.keys(groupedTasks) ?? [""])[0])
     const [tabData, setTabData] = useState<Task[]>(tasks)

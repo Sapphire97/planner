@@ -30,6 +30,7 @@ const TaskRowActions = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    cursor: pointer;
 `
 const TaskRowActionsLabel = styled.div`
     font-size: .775rem;

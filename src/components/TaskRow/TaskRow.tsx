@@ -15,16 +15,16 @@ type TaskRowProps = {
 
 const TaskRow = ({ task } : TaskRowProps) => {
     const archiveTask = () => {
-        console.log(task.id)
+        console.log("archive task clicked")
     }
     return (
-        <TaskRowContainer>
+        <TaskRowContainer data-testid={"task-row"}>
             <TaskRowContent>
-                <RadioButton content={task.title} value={task.id} setValue={archiveTask} />
+                <RadioButton content={task.title} value={task.id} onClick={archiveTask} />
                 <TaskRowDescriptionContainer>
                     <Icon name={"calendar"} color={"primary"} />
                     <TaskRowDescription>
-                        {(task.dueDate).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                        {(new Date(task.dueDate)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </TaskRowDescription>
                 </TaskRowDescriptionContainer>
             </TaskRowContent>

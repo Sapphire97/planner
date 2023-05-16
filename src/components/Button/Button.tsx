@@ -13,6 +13,7 @@ const Button = ({ variant, content, disabled, icon, onBtnPress }: ButtonProps) =
     const {backgroundColor, color} = getColorValue(variant)
     return (
         <ButtonContainer
+            role={"button"}
             onClick={onBtnPress}
             style={{ backgroundColor, color }}
             disabled={disabled}

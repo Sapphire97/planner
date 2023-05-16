@@ -32,10 +32,21 @@ To build the app, run the following command in the project directory:
 
 This will create a production build of the app in the build directory.
 
+## Testing the App
+
+To test the app, run the following command in the project directory:
+
+### `npm test`
+
+However, prior to a Jest configuration patch - commit 'chore: Fix Jest configurations.', run the following command in the project directory:
+
+### `node node_modules/react-scripts/scripts/test.js`
+
 ## App Structure
 
 The app is organized into the following directories:
 
     src/components - React components
+    src/hooks - React Hooks
     src/types - TypeScript types/interfaces
     src/utils - Utility functions

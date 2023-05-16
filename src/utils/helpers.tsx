@@ -5,6 +5,7 @@ import CalendarIcon from "../components/Icons/CalendarIcon";
 import EditIcon from "../components/Icons/EditIcon";
 import AddTaskDialog from "../components/AddTaskDialog/AddTaskDialog";
 import CloseIcon from "../components/Icons/CloseIcon";
+import EditTaskDialog from "../components/EditTaskDialog/EditTaskDialog";
 
 const Icon = ({name, color}: IconProps) => {
     switch (name) {
@@ -82,8 +83,10 @@ const DialogContent = ({name, closeOverlay}: DialogProps) => {
     switch (name) {
         case "addTask":
             return <AddTaskDialog closeOverlay={closeOverlay} />
+        case "editTask":
+            return <EditTaskDialog closeOverlay={closeOverlay} />
         default:
-            return <>{name}</>
+            return <></>
     }
 }
 

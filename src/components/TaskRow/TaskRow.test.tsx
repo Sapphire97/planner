@@ -13,7 +13,8 @@ const mockTask: Task = {
 
 describe("TaskRow component", () => {
     test("renders task title and due date", () => {
-        const { getByText } = render(<TaskRow task={mockTask} />)
+        const setOverlayName = jest.fn()
+        const { getByText } = render(<TaskRow task={mockTask} setOverlayName={setOverlayName}/>)
         const titleElement = getByText(mockTask.title)
 
         expect(titleElement).toBeInTheDocument()

@@ -8,18 +8,37 @@ import {
 } from "./TaskRow-styled";
 import RadioButton from "../RadioButton/RadioButton";
 import {Icon} from "../../utils/helpers";
+import {useTaskContext} from "../../hooks/useTaskContext";
 
 type TaskRowProps = {
     task: Task
+    setOverlayName: (name: string) => void
 }
 
-const TaskRow = ({ task } : TaskRowProps) => {
+const TaskRow = ({ task, setOverlayName } : TaskRowProps) => {
+    const { tasks, setTasks, setSelectedTask } = useTaskContext()
     const archiveTask = () => {
-        console.log("archive task clicked")
+        const updatedTasks = tasks.map((selectedTask) =>
+            selectedTask.id === task.id ?
+                {
+                    ...selectedTask,
+                    isArchived: true,
+                    updatedOn: new Date()
+                } : selectedTask
+        )
+        setTasks(updatedTasks)
+    }
+    const editTask = () => {
+        setSelectedTask(task)
+        setOverlayName("editTask")
+    }
+    const viewTask = () => {
+        setSelectedTask(task)
+        setOverlayName("viewTask")
     }
     return (
         <TaskRowContainer data-testid={"task-row"}>
-            <TaskRowContent>
+            <TaskRowContent onClick={viewTask}>
                 <RadioButton content={task.title} value={task.id} onClick={archiveTask} />
                 <TaskRowDescriptionContainer>
                     <Icon name={"calendar"} color={"primary"} />
@@ -28,7 +47,7 @@ const TaskRow = ({ task } : TaskRowProps) => {
                     </TaskRowDescription>
                 </TaskRowDescriptionContainer>
             </TaskRowContent>
-            <TaskRowActions>
+            <TaskRowActions onClick={editTask}>
                 <TaskRowActionsLabel>Edit</TaskRowActionsLabel>
                 <Icon name={"edit"} color={"primary"} />
             </TaskRowActions>

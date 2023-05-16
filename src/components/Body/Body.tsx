@@ -46,7 +46,7 @@ const Body = () => {
                 <BodyContent>
                     {tabData.map((task) => (
                         <div key={`task_${task.id}`}>
-                            <TaskRow task={task} />
+                            <TaskRow task={task} setOverlayName={setOverlayName} />
                         </div>
                     ))}
                     {tabData.length < 1 && <div> No data to show </div>}

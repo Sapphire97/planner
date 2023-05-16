@@ -1,6 +1,7 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import Notification from "./Notification"
+import '@testing-library/jest-dom/extend-expect';
 
 describe("Notification", () => {
     it("should render the notification message", () => {

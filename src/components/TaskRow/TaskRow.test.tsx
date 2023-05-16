@@ -1,6 +1,7 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import TaskRow from "./TaskRow"
+import '@testing-library/jest-dom/extend-expect';
 
 const mockTask: Task = {
     id: 1,

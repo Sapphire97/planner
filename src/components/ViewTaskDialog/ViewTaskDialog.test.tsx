@@ -2,6 +2,7 @@ import React from "react"
 import { render } from "@testing-library/react"
 import { useTaskContext } from "../../hooks/useTaskContext"
 import ViewTaskDialog from "./ViewTaskDialog"
+import '@testing-library/jest-dom/extend-expect';
 
 jest.mock("../../hooks/useTaskContext")
 

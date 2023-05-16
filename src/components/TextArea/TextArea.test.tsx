@@ -1,6 +1,7 @@
 import React from "react"
 import { render, fireEvent } from "@testing-library/react"
 import TextArea from "./TextArea"
+import '@testing-library/jest-dom/extend-expect';
 
 describe("TextArea", () => {
     it("renders the label correctly", () => {

@@ -1,6 +1,7 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import { TaskProvider } from "./useTaskContext"
+import '@testing-library/jest-dom/extend-expect';
 
 describe("TaskProvider", () => {
     const tasks: Task[] = [

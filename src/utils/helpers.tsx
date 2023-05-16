@@ -6,6 +6,7 @@ import EditIcon from "../components/Icons/EditIcon";
 import AddTaskDialog from "../components/AddTaskDialog/AddTaskDialog";
 import CloseIcon from "../components/Icons/CloseIcon";
 import EditTaskDialog from "../components/EditTaskDialog/EditTaskDialog";
+import ViewTaskDialog from "../components/ViewTaskDialog/ViewTaskDialog";
 
 const Icon = ({name, color}: IconProps) => {
     switch (name) {
@@ -85,6 +86,8 @@ const DialogContent = ({name, closeOverlay}: DialogProps) => {
             return <AddTaskDialog closeOverlay={closeOverlay} />
         case "editTask":
             return <EditTaskDialog closeOverlay={closeOverlay} />
+        case "viewTask":
+            return <ViewTaskDialog closeOverlay={closeOverlay} />
         default:
             return <></>
     }

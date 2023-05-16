@@ -19,9 +19,10 @@ import {DatesGroup, DatesContainer, DatesRowContent, DatesRowLabel} from "./Edit
 
 type EditTaskProps = {
     closeOverlay: () => void
+    setNotificationMessage: (message: string) => void
 }
 
-const EditTaskDialog = ({closeOverlay}: EditTaskProps) => {
+const EditTaskDialog = ({closeOverlay, setNotificationMessage}: EditTaskProps) => {
     const {tasks, setTasks} = useTaskContext()
     const {selectedTask} = useTaskContext()
     const task = selectedTask ?? DefaultTask
@@ -38,25 +39,31 @@ const EditTaskDialog = ({closeOverlay}: EditTaskProps) => {
     )
 
     const onSubmit = () => {
-        const updatedTasks = tasks.map((currentTask) =>
-            currentTask.id === task.id ?
-                {
-                    ...currentTask,
-                    description: description,
-                    dueDate: dueDate,
-                    subTasks: mapSubTasks(inputs),
-                    title: title,
-                    updatedOn: new Date()
-                } : currentTask
-        )
-        setTasks(updatedTasks)
-        closeOverlay()
+        try{
+            const updatedTasks = tasks.map((currentTask) =>
+                currentTask.id === task.id ?
+                    {
+                        ...currentTask,
+                        description: description,
+                        dueDate: dueDate,
+                        subTasks: mapSubTasks(inputs),
+                        title: title,
+                        updatedOn: new Date()
+                    } : currentTask
+            )
+            setTasks(updatedTasks)
+            closeOverlay()
+            setNotificationMessage(`Task ${task.title} was updated successfully`)
+        }
+        catch (e) {
+            setNotificationMessage("Oops! Something went wrong. Please try again later.")
+        }
     }
 
     const handleEditInput = (): void => {
-        const newId = inputs.length ? inputs[inputs.length - 1].id + 1 : 1;
-        const newInput = { id: newId, value: '' };
-        setInputs([...inputs, newInput]);
+        const newId = inputs.length ? inputs[inputs.length - 1].id + 1 : 1
+        const newInput = { id: newId, value: "" }
+        setInputs([...inputs, newInput])
     }
 
     const handleRemoveInput = (id: number): void => {

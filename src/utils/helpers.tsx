@@ -80,13 +80,14 @@ const getColorValue = (variant: string) => {
 type DialogProps = {
     name: string
     closeOverlay: () => void
+    setNotificationMessage: (message: string) => void
 }
-const DialogContent = ({name, closeOverlay}: DialogProps) => {
+const DialogContent = ({name, closeOverlay, setNotificationMessage}: DialogProps) => {
     switch (name) {
         case "addTask":
-            return <AddTaskDialog closeOverlay={closeOverlay} />
+            return <AddTaskDialog closeOverlay={closeOverlay} setNotificationMessage={setNotificationMessage} />
         case "editTask":
-            return <EditTaskDialog closeOverlay={closeOverlay} />
+            return <EditTaskDialog closeOverlay={closeOverlay} setNotificationMessage={setNotificationMessage} />
         case "viewTask":
             return <ViewTaskDialog closeOverlay={closeOverlay} />
         default:
@@ -94,4 +95,4 @@ const DialogContent = ({name, closeOverlay}: DialogProps) => {
     }
 }
 
-export { Icon, getColorValue, DialogContent }
+export { Icon, getColorValue, getColorValueByName, DialogContent }

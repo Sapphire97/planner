@@ -15,6 +15,7 @@ import {useTaskContext} from "../../hooks/useTaskContext";
 import {InputStyled, TextInputContainer} from "../Input/Input-styled";
 import {DefaultTask} from "../../utils/defaults";
 import {mapSubTasks} from "../../utils/dataHelpers";
+import {DatesGroup, DatesContainer, DatesRowContent, DatesRowLabel} from "./EditTaskDialog-styled";
 
 type EditTaskProps = {
     closeOverlay: () => void
@@ -71,12 +72,26 @@ const EditTaskDialog = ({closeOverlay}: EditTaskProps) => {
     }
 
     return (
-        <DialogContainer>
+        <DialogContainer id={"dialog-container"}>
             <DialogHeader>
                 <DialogTitle> Edit a task </DialogTitle>
                 <CloseDialog closeDialog={closeOverlay} />
             </DialogHeader>
             <DialogBody>
+                <DatesContainer>
+                    <DatesGroup>
+                        <DatesRowLabel htmlFor="created-on">Created on: </DatesRowLabel>
+                        <DatesRowContent id="created-on">
+                            {`${(new Date(task.createdOn)).toDateString()} ${(new Date(task.createdOn)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`}
+                        </DatesRowContent>
+                    </DatesGroup>
+                    <DatesGroup>
+                        <DatesRowLabel htmlFor="updated-on">Last updated on:</DatesRowLabel>
+                        <DatesRowContent id="updated-on">
+                            {`${(new Date(task.updatedOn)).toDateString()} ${(new Date(task.updatedOn)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`}
+                        </DatesRowContent>
+                    </DatesGroup>
+                </DatesContainer>
                 <Input label={"Title"} type={"text"} value={title} onChange={setTitle} />
                 <TextArea label={"Description"} value={description} onChange={setDescription} />
                 <Input label={"Due date"} type={"datetime-local"} value={dueDate} onChange={setDueDate} />

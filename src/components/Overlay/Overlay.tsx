@@ -1,5 +1,5 @@
 import {
-    DialogContainer,
+    FloatingContainer,
     OverlayContainer,
     Shadow
 } from "./Overlay-styled";
@@ -21,9 +21,9 @@ const Overlay = ({name, setOverlayName}: OverlayProps) => {
     return (
         <OverlayContainer id={"overlay-container"} data-testid={"overlay-container"}>
             <Shadow data-testid={"shadow"} onClick={closeOverlay} />
-            <DialogContainer>
+            <FloatingContainer>
                 <DialogContent name={name} closeOverlay={closeOverlay} />
-            </DialogContainer>
+            </FloatingContainer>
         </OverlayContainer>
     )
 }

@@ -22,14 +22,17 @@ const Shadow = styled.div`
     opacity: 0.7;
     z-index: 1040;
 `
-const DialogContainer = styled.div`
+const FloatingContainer = styled.div`
     min-width: 400px;
     max-width: 60%;
     min-height: 200px;
     max-height: 60%;
     margin: auto;
-    background: #FFFFFF;
     z-index: 1050;
+`
+const DialogContainer = styled.div`
+    margin: 0;
+    background: #FFFFFF;
 `
 const DialogHeader = styled.div`
     display: flex;
@@ -64,5 +67,5 @@ const DialogFooter = styled.div`
     padding: 1.2em;
 `
 
-export { OverlayContainer, Shadow, DialogContainer, DialogTitle, DialogHeader,
+export { OverlayContainer, Shadow, FloatingContainer, DialogContainer, DialogTitle, DialogHeader,
     DialogIconContainer, DialogBody, LinkButton, DialogFooter }

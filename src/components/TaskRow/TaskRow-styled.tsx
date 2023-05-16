@@ -23,7 +23,6 @@ const TaskRowDescriptionContainer = styled.div`
 const TaskRowDescription = styled.span`
     margin-left: 0.2em;
     font-size: .675rem;
-    color: ${primaryColor};
 `
 const TaskRowActions = styled.div`
     flex-grow: 1;

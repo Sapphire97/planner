@@ -1,3 +1,4 @@
 type IconProps = {
-    color?: string
+    name?: string,
+    color: string
 }

@@ -4,10 +4,6 @@ import HomeIcon from "../components/Icons/HomeIcon";
 import CalendarIcon from "../components/Icons/CalendarIcon";
 import EditIcon from "../components/Icons/EditIcon";
 
-type IconProps = {
-    name: string,
-    color: string
-}
 const Icon = ({name, color}: IconProps) => {
     switch (name) {
         case "add":
@@ -74,5 +70,14 @@ const getColorValue = (variant: string) => {
             }
     }
 }
+type DialogProps = {
+    name: string
+}
+const DialogContent = ({name}: DialogProps) => {
+    switch (name) {
+        default:
+            return <>{name}</>
+    }
+}
 
-export { Icon, getColorValue }
+export { Icon, getColorValue, DialogContent }

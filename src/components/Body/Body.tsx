@@ -6,6 +6,7 @@ import React, {useEffect, useState} from "react";
 import {TaskProvider} from "../../hooks/useTaskContext";
 import Tabs from "../Tabs/Tabs";
 import {groupTasks} from "../../utils/dataHelpers";
+import Overlay from "../Overlay/Overlay";
 
 const Body = () => {
     const today = new Date()
@@ -24,9 +25,10 @@ const Body = () => {
     const [groupedTasks, setGroupedTasks] = useState(() => groupTasks(tasks))
     const [activeTab, setActiveTab] = useState<string>( (Object.keys(groupedTasks) ?? [""])[0])
     const [tabData, setTabData] = useState<Task[]>(tasks)
+    const [overlayName, setOverlayName] = useState("")
 
     const openAddTaskOverlay = () => {
-        console.log("openAddTaskOverlay")
+        setOverlayName("addTask")
     }
 
     useEffect( () => {
@@ -60,6 +62,7 @@ const Body = () => {
                     ))}
                     {tabData.length < 1 && <div> No data to show </div>}
                 </BodyContent>
+                <Overlay name={overlayName} setOverlayName={setOverlayName} />
             </TaskProvider>
         </BodyContainer>
     )

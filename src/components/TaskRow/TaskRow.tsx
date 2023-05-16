@@ -29,6 +29,7 @@ const TaskRow = ({ task, setOverlayName } : TaskRowProps) => {
         setTasks(updatedTasks)
     }
     const editTask = () => {
+        if(task.isArchived) return
         setSelectedTask(task)
         setOverlayName("editTask")
     }
@@ -47,7 +48,7 @@ const TaskRow = ({ task, setOverlayName } : TaskRowProps) => {
                     </TaskRowDescription>
                 </TaskRowDescriptionContainer>
             </TaskRowContent>
-            <TaskRowActions onClick={editTask}>
+            <TaskRowActions style={{display: task.isArchived ? "none": "flex"}} onClick={editTask}>
                 <TaskRowActionsLabel>Edit</TaskRowActionsLabel>
                 <Icon name={"edit"} color={"primary"} />
             </TaskRowActions>
